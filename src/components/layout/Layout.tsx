@@ -1,11 +1,8 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Navbar } from "./Navbar";
 import { Toaster } from "../ui/toaster";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
-  useEffect(() => {
-    document.title = "Product Management";
-  }, []);
   return (
     <div className="min-h-screen bg-gray-100">
       <Navbar />
