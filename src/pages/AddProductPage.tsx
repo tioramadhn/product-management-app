@@ -3,11 +3,12 @@ import { useProducts } from "../context/ProductContext";
 import ProductForm from "../components/products/ProductForm";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
 
 export default function AddProductPage() {
   const { addProduct } = useProducts();
   const navigate = useNavigate();
-
+  const { toast } = useToast();
   const handleSubmit = (product: {
     name: string;
     sku: string;
@@ -16,6 +17,10 @@ export default function AddProductPage() {
     variations: { name: string; sku: string; price: number }[];
   }) => {
     addProduct(product);
+    toast({
+      title: "Product added successfully",
+      description: "You have successfully added a product",
+    });
     navigate("/");
   };
 

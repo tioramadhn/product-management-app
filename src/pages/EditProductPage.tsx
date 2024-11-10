@@ -3,11 +3,13 @@ import { useProducts } from "../context/ProductContext";
 import ProductForm from "../components/products/ProductForm";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
 
 export default function EditProductPage() {
   const { id } = useParams<{ id: string }>();
   const { products, updateProduct } = useProducts();
   const navigate = useNavigate();
+  const { toast } = useToast();
 
   const product = products.find((p) => p.id === Number(id));
 
@@ -23,7 +25,11 @@ export default function EditProductPage() {
     variations: { name: string; sku: string; price: number }[];
   }) => {
     updateProduct(Number(id), { ...updatedProduct, id: Number(id) });
-    navigate("/");
+    toast({
+      title: "Product updated",
+      description: "Product has been updated successfully",
+    });
+    navigate(`/product/${Number(id)}`);
   };
 
   const handleBack = () => {

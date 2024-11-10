@@ -23,12 +23,13 @@ import {
 } from "@/components/ui/alert-dialog";
 import { Pencil, Trash2, ArrowLeft } from "lucide-react";
 import DOMPurify from "dompurify";
+import { useToast } from "@/hooks/use-toast";
 
 export default function ProductDetailPage() {
   const { id } = useParams<{ id: string }>();
   const { products, deleteProduct } = useProducts();
   const navigate = useNavigate();
-
+  const { toast } = useToast();
   const product = products.find((p) => p.id === Number(id));
 
   if (!product) {
@@ -41,6 +42,10 @@ export default function ProductDetailPage() {
 
   const handleDeleteProduct = () => {
     deleteProduct(product.id);
+    toast({
+      title: "Product deleted",
+      description: "Product has been deleted successfully",
+    });
     navigate("/");
   };
 
