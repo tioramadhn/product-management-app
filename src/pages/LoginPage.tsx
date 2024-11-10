@@ -16,12 +16,13 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { loginSchema } from "@/validations/loginSchema";
 import { Eye, EyeOff } from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
 
 export default function LoginPage() {
   const { login, isAuthenticated } = useAuth();
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
-
+  const { toast } = useToast();
   const form = useForm<z.infer<typeof loginSchema>>({
     resolver: zodResolver(loginSchema),
     defaultValues: {
@@ -33,6 +34,10 @@ export default function LoginPage() {
   const onSubmit = async (values: z.infer<typeof loginSchema>) => {
     const success = await login(values.username, values.password);
     if (success) {
+      toast({
+        title: "Login successful",
+        description: "You will be redirected to the home page",
+      });
       navigate("/");
     } else {
       form.setError("root", {
@@ -44,6 +49,10 @@ export default function LoginPage() {
 
   useEffect(() => {
     if (isAuthenticated) {
+      toast({
+        title: "You are already logged in",
+        description: "You will be redirected to the home page",
+      });
       navigate("/");
       return;
     }
