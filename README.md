@@ -1,50 +1,61 @@
-# React + TypeScript + Vite
+# Product Management App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a frontend application built with React and Vite + TypeScript. It enables users to manage product data, including adding, editing, and deleting product details. The app includes authentication functionality, allowing users to log in and out securely.
 
-Currently, two official plugins are available:
+## Project Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+The application includes the following key features:
 
-## Expanding the ESLint configuration
+- **Login**: User authentication to access and manage product data.
+- **Logout**: User logout to ensure secure session management.
+- **Product List**: Display a list of products with essential details.
+- **Add Product**: Form to input new product details, including attributes like name, SKU, brand, and description.
+- **Edit Product**: Update existing product information.
+- **Delete Product**: Remove products from the list.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+### Product Attributes
 
-- Configure the top-level `parserOptions` property like this:
+Each product contains the following attributes:
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+- **Name**: Product name (text input)
+- **SKU**: Unique identifier for the product (text input)
+- **Brand**: Product brand (dropdown selection)
+- **Description**: Product description (WYSIWYG editor for rich text formatting)
+- **Variations**: Dynamic list of variations, each with:
+  - **Name**: Variation name (text input)
+  - **SKU**: SKU for each variation (text input)
+  - **Selling Price**: Price for each variation (number input)
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## Getting Started
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+### Prerequisites
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+Make sure you have the following installed:
+
+- **Node.js**: Version 14 or higher
+- **npm** or **yarn**: For managing dependencies
+
+### Installation
+
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/your-username/your-repo.git
+   cd your-repo
+   ```
+2. **Install Dependecies**:
+   ```bash
+   npm install
+   ```
+3. **Run Application**:
+   ```bash
+   npm run dev
+   ```
+
+### Credentials
+
+use this credentials to run app
+
+```bash
+username : admin
+password : password
 ```
