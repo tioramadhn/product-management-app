@@ -59,7 +59,7 @@ export default function LoginPage() {
   }, []);
 
   return (
-    <div className="max-w-md mx-auto mt-10">
+    <div className="max-w-md mx-auto mt-10 px-4 ">
       <h1 className="text-3xl font-bold mb-4">Login</h1>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
